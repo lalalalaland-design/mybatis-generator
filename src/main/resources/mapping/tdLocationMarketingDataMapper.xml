@@ -1,0 +1,284 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.demo.dao.tdLocationMarketingDataMapper" >
+  <resultMap id="BaseResultMap" type="com.example.demo.model.tdLocationMarketingData" >
+    <id column="parent_mkt_id" property="parentMktId" jdbcType="VARCHAR" />
+    <result column="user_id" property="userId" jdbcType="VARCHAR" />
+    <result column="area_code" property="areaCode" jdbcType="VARCHAR" />
+    <result column="area_name" property="areaName" jdbcType="VARCHAR" />
+    <result column="task_name" property="taskName" jdbcType="VARCHAR" />
+    <result column="submit_upper_limit" property="submitUpperLimit" jdbcType="VARCHAR" />
+    <result column="task_dist" property="taskDist" jdbcType="INTEGER" />
+    <result column="task_start_timer" property="taskStartTimer" jdbcType="TIMESTAMP" />
+    <result column="task_end_timer" property="taskEndTimer" jdbcType="TIMESTAMP" />
+    <result column="submit_freq" property="submitFreq" jdbcType="VARCHAR" />
+    <result column="task_repeat" property="taskRepeat" jdbcType="VARCHAR" />
+    <result column="base_station_num" property="baseStationNum" jdbcType="INTEGER" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+    <result column="state" property="state" jdbcType="INTEGER" />
+    <result column="version" property="version" jdbcType="INTEGER" />
+    <result column="kq_ids" property="kqIds" jdbcType="VARCHAR" />
+    <result column="sync_his_state" property="syncHisState" jdbcType="INTEGER" />
+    <result column="back_phone_table" property="backPhoneTable" jdbcType="VARCHAR" />
+    <result column="cache_flush" property="cacheFlush" jdbcType="INTEGER" />
+    <result column="account_id" property="accountId" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    parent_mkt_id, user_id, area_code, area_name, task_name, submit_upper_limit, task_dist, 
+    task_start_timer, task_end_timer, submit_freq, task_repeat, base_station_num, create_time, 
+    update_time, state, version, kq_ids, sync_his_state, back_phone_table, cache_flush, 
+    account_id
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from td_location_marketing_data
+    where parent_mkt_id = #{parentMktId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from td_location_marketing_data
+    where parent_mkt_id = #{parentMktId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.example.demo.model.tdLocationMarketingData" >
+    insert into td_location_marketing_data (parent_mkt_id, user_id, area_code, 
+      area_name, task_name, submit_upper_limit, 
+      task_dist, task_start_timer, task_end_timer, 
+      submit_freq, task_repeat, base_station_num, 
+      create_time, update_time, state, 
+      version, kq_ids, sync_his_state, 
+      back_phone_table, cache_flush, account_id
+      )
+    values (#{parentMktId,jdbcType=VARCHAR}, #{userId,jdbcType=VARCHAR}, #{areaCode,jdbcType=VARCHAR}, 
+      #{areaName,jdbcType=VARCHAR}, #{taskName,jdbcType=VARCHAR}, #{submitUpperLimit,jdbcType=VARCHAR}, 
+      #{taskDist,jdbcType=INTEGER}, #{taskStartTimer,jdbcType=TIMESTAMP}, #{taskEndTimer,jdbcType=TIMESTAMP}, 
+      #{submitFreq,jdbcType=VARCHAR}, #{taskRepeat,jdbcType=VARCHAR}, #{baseStationNum,jdbcType=INTEGER}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, #{state,jdbcType=INTEGER}, 
+      #{version,jdbcType=INTEGER}, #{kqIds,jdbcType=VARCHAR}, #{syncHisState,jdbcType=INTEGER}, 
+      #{backPhoneTable,jdbcType=VARCHAR}, #{cacheFlush,jdbcType=INTEGER}, #{accountId,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.example.demo.model.tdLocationMarketingData" >
+    insert into td_location_marketing_data
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="parentMktId != null" >
+        parent_mkt_id,
+      </if>
+      <if test="userId != null" >
+        user_id,
+      </if>
+      <if test="areaCode != null" >
+        area_code,
+      </if>
+      <if test="areaName != null" >
+        area_name,
+      </if>
+      <if test="taskName != null" >
+        task_name,
+      </if>
+      <if test="submitUpperLimit != null" >
+        submit_upper_limit,
+      </if>
+      <if test="taskDist != null" >
+        task_dist,
+      </if>
+      <if test="taskStartTimer != null" >
+        task_start_timer,
+      </if>
+      <if test="taskEndTimer != null" >
+        task_end_timer,
+      </if>
+      <if test="submitFreq != null" >
+        submit_freq,
+      </if>
+      <if test="taskRepeat != null" >
+        task_repeat,
+      </if>
+      <if test="baseStationNum != null" >
+        base_station_num,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="updateTime != null" >
+        update_time,
+      </if>
+      <if test="state != null" >
+        state,
+      </if>
+      <if test="version != null" >
+        version,
+      </if>
+      <if test="kqIds != null" >
+        kq_ids,
+      </if>
+      <if test="syncHisState != null" >
+        sync_his_state,
+      </if>
+      <if test="backPhoneTable != null" >
+        back_phone_table,
+      </if>
+      <if test="cacheFlush != null" >
+        cache_flush,
+      </if>
+      <if test="accountId != null" >
+        account_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="parentMktId != null" >
+        #{parentMktId,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="areaCode != null" >
+        #{areaCode,jdbcType=VARCHAR},
+      </if>
+      <if test="areaName != null" >
+        #{areaName,jdbcType=VARCHAR},
+      </if>
+      <if test="taskName != null" >
+        #{taskName,jdbcType=VARCHAR},
+      </if>
+      <if test="submitUpperLimit != null" >
+        #{submitUpperLimit,jdbcType=VARCHAR},
+      </if>
+      <if test="taskDist != null" >
+        #{taskDist,jdbcType=INTEGER},
+      </if>
+      <if test="taskStartTimer != null" >
+        #{taskStartTimer,jdbcType=TIMESTAMP},
+      </if>
+      <if test="taskEndTimer != null" >
+        #{taskEndTimer,jdbcType=TIMESTAMP},
+      </if>
+      <if test="submitFreq != null" >
+        #{submitFreq,jdbcType=VARCHAR},
+      </if>
+      <if test="taskRepeat != null" >
+        #{taskRepeat,jdbcType=VARCHAR},
+      </if>
+      <if test="baseStationNum != null" >
+        #{baseStationNum,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="state != null" >
+        #{state,jdbcType=INTEGER},
+      </if>
+      <if test="version != null" >
+        #{version,jdbcType=INTEGER},
+      </if>
+      <if test="kqIds != null" >
+        #{kqIds,jdbcType=VARCHAR},
+      </if>
+      <if test="syncHisState != null" >
+        #{syncHisState,jdbcType=INTEGER},
+      </if>
+      <if test="backPhoneTable != null" >
+        #{backPhoneTable,jdbcType=VARCHAR},
+      </if>
+      <if test="cacheFlush != null" >
+        #{cacheFlush,jdbcType=INTEGER},
+      </if>
+      <if test="accountId != null" >
+        #{accountId,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.demo.model.tdLocationMarketingData" >
+    update td_location_marketing_data
+    <set >
+      <if test="userId != null" >
+        user_id = #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="areaCode != null" >
+        area_code = #{areaCode,jdbcType=VARCHAR},
+      </if>
+      <if test="areaName != null" >
+        area_name = #{areaName,jdbcType=VARCHAR},
+      </if>
+      <if test="taskName != null" >
+        task_name = #{taskName,jdbcType=VARCHAR},
+      </if>
+      <if test="submitUpperLimit != null" >
+        submit_upper_limit = #{submitUpperLimit,jdbcType=VARCHAR},
+      </if>
+      <if test="taskDist != null" >
+        task_dist = #{taskDist,jdbcType=INTEGER},
+      </if>
+      <if test="taskStartTimer != null" >
+        task_start_timer = #{taskStartTimer,jdbcType=TIMESTAMP},
+      </if>
+      <if test="taskEndTimer != null" >
+        task_end_timer = #{taskEndTimer,jdbcType=TIMESTAMP},
+      </if>
+      <if test="submitFreq != null" >
+        submit_freq = #{submitFreq,jdbcType=VARCHAR},
+      </if>
+      <if test="taskRepeat != null" >
+        task_repeat = #{taskRepeat,jdbcType=VARCHAR},
+      </if>
+      <if test="baseStationNum != null" >
+        base_station_num = #{baseStationNum,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="state != null" >
+        state = #{state,jdbcType=INTEGER},
+      </if>
+      <if test="version != null" >
+        version = #{version,jdbcType=INTEGER},
+      </if>
+      <if test="kqIds != null" >
+        kq_ids = #{kqIds,jdbcType=VARCHAR},
+      </if>
+      <if test="syncHisState != null" >
+        sync_his_state = #{syncHisState,jdbcType=INTEGER},
+      </if>
+      <if test="backPhoneTable != null" >
+        back_phone_table = #{backPhoneTable,jdbcType=VARCHAR},
+      </if>
+      <if test="cacheFlush != null" >
+        cache_flush = #{cacheFlush,jdbcType=INTEGER},
+      </if>
+      <if test="accountId != null" >
+        account_id = #{accountId,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where parent_mkt_id = #{parentMktId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.example.demo.model.tdLocationMarketingData" >
+    update td_location_marketing_data
+    set user_id = #{userId,jdbcType=VARCHAR},
+      area_code = #{areaCode,jdbcType=VARCHAR},
+      area_name = #{areaName,jdbcType=VARCHAR},
+      task_name = #{taskName,jdbcType=VARCHAR},
+      submit_upper_limit = #{submitUpperLimit,jdbcType=VARCHAR},
+      task_dist = #{taskDist,jdbcType=INTEGER},
+      task_start_timer = #{taskStartTimer,jdbcType=TIMESTAMP},
+      task_end_timer = #{taskEndTimer,jdbcType=TIMESTAMP},
+      submit_freq = #{submitFreq,jdbcType=VARCHAR},
+      task_repeat = #{taskRepeat,jdbcType=VARCHAR},
+      base_station_num = #{baseStationNum,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      state = #{state,jdbcType=INTEGER},
+      version = #{version,jdbcType=INTEGER},
+      kq_ids = #{kqIds,jdbcType=VARCHAR},
+      sync_his_state = #{syncHisState,jdbcType=INTEGER},
+      back_phone_table = #{backPhoneTable,jdbcType=VARCHAR},
+      cache_flush = #{cacheFlush,jdbcType=INTEGER},
+      account_id = #{accountId,jdbcType=VARCHAR}
+    where parent_mkt_id = #{parentMktId,jdbcType=VARCHAR}
+  </update>
+</mapper>
